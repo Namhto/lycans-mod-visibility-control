@@ -1,23 +1,25 @@
-# LycansModTemplate
+# VisibilityControlPlugin
 
-Ce repo contiens un mod d'exemple pour Lycans.
+**English**
 
-Vous pouvez cloner ce repo ou vous en servir comme d'un Template, ouvrir le fichier 
-solution dans **Visual Studio** et commencer à développer directement.
+This plugin allows you, when you host a game, to:
+- Change the intensity of local lights (lanterns, fire camps, candles)
+- Change the intensity of ambient light during night
+- Disable the fog during night
 
-Ce plugin d'exemple devrait vous permettre d'avoir tout ce dont vous avez besoin pour bien 
-commencer à développer un mod simple. Il setup les éléments suivants :
+This plugin needs to be installed by both the host and all clients.
 
-- Un projet `.csproj` préconfigurer avec les paquets nécessaires
-- Un logger global
-- Un plugin basique qui broadcast un son
+If a player joins your game without this plugin, their visibility settings will not be affected.
 
-## Publier sur Thunderstore
+---
 
-Ce template propose aussi un exemple de package que vous pouvez utiliser pour uploader votre mod sur [Thunderstore](https://thunderstore.io/c/lycans/) :
+**Français**
 
-- Placez vos .dll dans le dossier **Thunderstore\plugins\\**
-- Modifiez le fichier `manifest.json` avec les informations de votre mod
-- Écrivez un petit README afin de décrire ce que fait votre mod
-- Modifiez l'image `icon.png` pour changer l'icone de votre mod (l'image doit être aux dimensions 256x256 **obligatoirement**)
-- Rendez-vous enfin sur la page [d'upload de Thunderstore](https://thunderstore.io/c/lycans/create/)
+Ce plugin vous permet, quand vous créer une partie, de :
+- Changer l'intensité des lumières locales (lanternes, feux de camp, bougies)
+- Changee l'intensité de la lumière ambiente durant la nuit
+- Désactiver le brouillard durant la nuit
+
+Ce plugin doit être installé aussi bien par le propriétaire de la partie (host) que par les tous les autres joueurs invités (clients).
+
+Si un joueur rejoint votre partie sans ce plugin, leurs paramètres de visibilité ne seront pas affectés.
