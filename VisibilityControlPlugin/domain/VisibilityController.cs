@@ -64,17 +64,11 @@ public class VisibilityController : NetworkBehaviour
 
     public override void Spawned()
     {
-        if (Runner.IsServer)
-        {
-            VisibilityControlPlugin.Settings.AddPointLightIntensityListener(value => PointLightIntensity = value);
-            VisibilityControlPlugin.Settings.AddAmbientIntensityListener(value => AmbientIntensity = value);
-            VisibilityControlPlugin.Settings.AddForDisabledListener(value => FogDisabled = value);
-        }
-
+        BindToSettings();
         On.GameManager.Rpc_Transition += (orig, self) =>
         {
             orig(self);
-            Invoke(nameof(ApplyVisibilitySettings), 3);
+            ApplyVisibilitySettings();
         };
     }
 
@@ -83,10 +77,28 @@ public class VisibilityController : NetworkBehaviour
         VisibilityControlPlugin.Settings.ClearListeners();
     }
 
+    private void BindToSettings()
+    {
+        var settings = VisibilityControlPlugin.Settings;
+        if (Runner.IsServer)
+        {
+            settings.AddPointLightIntensityListener(value => PointLightIntensity = value);
+            settings.AddAmbientIntensityListener(value => AmbientIntensity = value);
+            settings.AddForDisabledListener(value => FogDisabled = value);
+        }
+
+        PointLightIntensity = settings.GetPointLightIntensity();
+        AmbientIntensity = settings.GetAmbientIntensity();
+        FogDisabled = settings.GetFogDisabled();
+    }
+
     private void ApplyVisibilitySettings()
     {
+        if (GameManager.LocalGameState != GameState.EGameState.Play)
+            return;
+        
         var lightingManager = GameManager.Instance.GetComponent<LightingManager>();
-        if (lightingManager.IsNight)
+        if (!lightingManager.IsNight)
         {
             Log.Info("Changing visibility settings");
 
