@@ -1,6 +1,6 @@
 ﻿using UnityEngine.Events;
 
-namespace VisibilityControlPlugin;
+namespace VisibilityControlPlugin.patch;
 
 using UnityEngine;
 using UnityEngine.Localization.Components;

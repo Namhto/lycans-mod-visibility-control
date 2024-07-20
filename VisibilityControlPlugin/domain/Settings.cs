@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace VisibilityControlPlugin;
+namespace VisibilityControlPlugin.domain;
 
 using BepInEx.Configuration;
 
@@ -10,7 +10,7 @@ public class Settings(ConfigFile config)
     private readonly ConfigEntry<float> _pointLightIntensity = config.Bind(
         "General",
         "PointLightIntensity",
-        0.5f,
+        0.4f,
         "Intensity of the point lights"
     );
 
@@ -19,7 +19,7 @@ public class Settings(ConfigFile config)
     private readonly ConfigEntry<float> _ambientIntensity = config.Bind(
         "General",
         "AmbientIntensity",
-        0.3f,
+        0.5f,
         "Intensity of the ambient light during nighttime"
     );
 

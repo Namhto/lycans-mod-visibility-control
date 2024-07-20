@@ -1,4 +1,6 @@
 ﻿using BepInEx;
+using VisibilityControlPlugin.domain;
+using VisibilityControlPlugin.patch;
 
 namespace VisibilityControlPlugin;
 

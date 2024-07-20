@@ -1,8 +1,9 @@
 ﻿using System;
 using Fusion;
 using UnityEngine;
+using VisibilityControlPlugin.domain;
 
-namespace VisibilityControlPlugin;
+namespace VisibilityControlPlugin.patch;
 
 public static class NetworkingPatch
 {
